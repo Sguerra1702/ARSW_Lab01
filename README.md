@@ -1,6 +1,9 @@
 ## Escuela Colombiana de Ingeniería
 ### Arquitecturas de Software
 ### Introducción al paralelismo - hilos
+## INTEGRANTES:
+### Santiago Guerra
+### Andres Rodriguez
 
 ### Trabajo individual o en parejas
 
