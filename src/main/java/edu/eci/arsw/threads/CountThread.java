@@ -9,7 +9,6 @@ package edu.eci.arsw.threads;
  *
  * @author hcadavid
  */
-import java.lang.*;
 public class CountThread extends Thread {
 
     private int A;
@@ -23,7 +22,7 @@ public class CountThread extends Thread {
     @Override
     public void run(){
         for (int i = A; i <= B; i++){
-            System.out.println(i);
+            System.out.println("Thread is running: " + i);
         }
     }
     

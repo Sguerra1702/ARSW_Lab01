@@ -5,7 +5,6 @@
  */
 package edu.eci.arsw.math;
 
-import java.util.Arrays;
 
 /**
  *
@@ -13,10 +12,14 @@ import java.util.Arrays;
  */
 public class Main {
 
-    public static void main(String a[]) {
-        System.out.println(bytesToHex(PiDigits.getDigits(0, 10)));
-        System.out.println(bytesToHex(PiDigits.getDigits(1, 100)));
-        System.out.println(bytesToHex(PiDigits.getDigits(1, 1000000)));
+    public static void main(String a[]) throws InterruptedException{
+        //System.out.println(bytesToHex(PiDigits.getDigits(0, 10)));
+        //System.out.println(bytesToHex(PiDigits.getDigits(1, 100)));
+
+        long Start = System.currentTimeMillis();
+        System.out.println(bytesToHex(new PiDigits().getDigits(1, 1000000,200)));
+        long Finally = System.currentTimeMillis();
+        System.out.println("Tiempo transcurrido" + (Start -Finally));
     }
 
     private final static char[] hexArray = "0123456789ABCDEF".toCharArray();

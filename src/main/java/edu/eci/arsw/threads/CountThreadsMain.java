@@ -10,7 +10,7 @@ package edu.eci.arsw.threads;
  * @author hcadavid
  */
 
-import edu.eci.arsw.threads.CountThread;
+
 public class CountThreadsMain {
     
     public static void main(String a[]){
