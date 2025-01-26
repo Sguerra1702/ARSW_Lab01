@@ -1,14 +1,17 @@
 ## Escuela Colombiana de Ingeniería
 ### Arquitecturas de Software
+
 ### Introducción al paralelismo - hilos
 ## INTEGRANTES:
 ### Santiago Guerra
 ### Andres Rodriguez
 
-### Trabajo individual o en parejas
-
 Entrega: Martes en el transcurso del día.
 Entregar: Fuentes y documento PDF con las respuestas.
+
+## Introducción
+
+En el ámbito de la arquitectura de software, uno de los desafios clave es la optimizacion del rendimiento mediante el uso eficiente de los recursos de nuestro sistema(equipo). El paralelismo, nos permite ejectar multiples tareas simultaneamente, es considerada una de las mejores estrategias por su efectividad a la hora de mejorar tanto la velocidad como la capacidad de procesamiento de un programa. En este laboratorio usaremos el uso de Hilos en JAVA para separar tareas complejas en multiples subprocesos, aprovechando los nucleos de procesamiento de nuestro equipo.
 
 **Parte I Hilos Java**
 
@@ -18,6 +21,31 @@ Entregar: Fuentes y documento PDF con las respuestas.
 	2. Inicie los tres hilos con 'start()'.
 	3. Ejecute y revise la salida por pantalla. 
 	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
+
+ ## Desarrollo Parte I 
+
+Para esta primera parte, inciso 1, se completa clase CountThread primero heredando de la clase Thread en java para trabajar con hilos.
+Se definen dos variables que seran los limites del rango que solicita el ejercicio
+Definimos un constructor
+Finalmente hacemos una sobreescritura del metodo run 
+
+![Imagen1.png](img/Imagen1.png)
+
+En el inciso 2, Se crean los 3 hilos, con los rangos correspondientes y su respectiva inicializacion.
+
+![Hello](img/2.png)
+
+Veamos que sucede cuando los ejecutamos:
+
+![Hello](img/7.png)
+
+Esta respuesta es correcta debido a que los hilos se ejecutan en paralelo, y el sistema lo que hace es ir mostrando la salida de un hilo, luego del otro, y del otro , entrecruzadas.
+
+Inciso 3, si cambiamos la incializacion por el metodo run, sucede los siguiente:
+
+![Hello](img/8.png)
+
+Al hacerlo, obtenemos que las salidas se muestran en orden, esto sucede debido que run() invoca un hilo y en ese hilo es donde se ejecuta el codigo, diferente a start(), que crea un nuevo hilo de ejecución y a su vez invoca a run() en ese nuevo hilo.
 
 **Parte II Hilos Java**
 
