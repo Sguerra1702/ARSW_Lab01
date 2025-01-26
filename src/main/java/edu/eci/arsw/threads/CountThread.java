@@ -22,7 +22,7 @@ public class CountThread extends Thread {
     @Override
     public void run(){
         for (int i = A; i <= B; i++){
-            System.out.println("Thread is running: " + i);
+            System.out.println(i);
         }
     }
     
