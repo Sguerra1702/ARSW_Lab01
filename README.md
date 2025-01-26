@@ -29,7 +29,7 @@ Se definen dos variables que seran los limites del rango que solicita el ejercic
 Definimos un constructor
 Finalmente hacemos una sobreescritura del metodo run 
 
-![Imagen1.png](img/Imagen1.png)
+![Imagen1.png](img/1.png)
 
 En el inciso 2, Se crean los 3 hilos, con los rangos correspondientes y su respectiva inicializacion.
 
