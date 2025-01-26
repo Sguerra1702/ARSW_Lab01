@@ -29,21 +29,21 @@ Se definen dos variables que seran los limites del rango que solicita el ejercic
 Definimos un constructor
 Finalmente hacemos una sobreescritura del metodo run 
 
-![](img/1.png)
+![Hello](img/1.png)
 
 En el inciso 2, Se crean los 3 hilos, con los rangos correspondientes y su respectiva inicializacion.
 
-![](img/2.png)
+![Hello](img/2.png)
 
 Veamos que sucede cuando los ejecutamos:
 
-![](img/7.png)
+![Hello](img/7.png)
 
 Esta respuesta es correcta debido a que los hilos se ejecutan en paralelo, y el sistema lo que hace es ir mostrando la salida de un hilo, luego del otro, y del otro , entrecruzadas.
 
 Inciso 3, si cambiamos la incializacion por el metodo run, sucede los siguiente:
 
-![](img/8.png)
+![Hello](img/8.png)
 
 Al hacerlo, obtenemos que las salidas se muestran en orden, esto sucede debido que run() invoca un hilo y en ese hilo es donde se ejecuta el codigo, diferente a start(), que crea un nuevo hilo de ejecución y a su vez invoca a run() en ese nuevo hilo.
 
