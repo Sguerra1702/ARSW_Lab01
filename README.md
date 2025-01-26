@@ -4,34 +4,34 @@
 ### Introducción al paralelismo - hilos
 ## INTEGRANTES:
 ### Santiago Guerra
-### Andres Rodriguez
+### Andrés Rodríguez
 
 Entrega: Martes en el transcurso del día.
 Entregar: Fuentes y documento PDF con las respuestas.
 
 ## Introducción
 
-En el ámbito de la arquitectura de software, uno de los desafios clave es la optimizacion del rendimiento mediante el uso eficiente de los recursos de nuestro sistema(equipo). El paralelismo, nos permite ejectar multiples tareas simultaneamente, es considerada una de las mejores estrategias por su efectividad a la hora de mejorar tanto la velocidad como la capacidad de procesamiento de un programa. En este laboratorio usaremos el uso de Hilos en JAVA para separar tareas complejas en multiples subprocesos, aprovechando los nucleos de procesamiento de nuestro equipo.
+En el ámbito de la arquitectura de software, uno de los desafíos clave es la optimización del rendimiento mediante el uso eficiente de los recursos de nuestro sistema(equipo). El paralelismo nos permite ejecutar múltiples tareas simultáneamente, es considerada una de las mejores estrategias por su efectividad a la hora de mejorar tanto la velocidad como la capacidad de procesamiento de un programa. En este laboratorio usaremos el uso de Hilos en JAVA para separar tareas complejas en múltiples subprocesos, aprovechando los núcleos de procesamiento de nuestro equipo.
 
 **Parte I Hilos Java**
 
 1. De acuerdo con lo revisado en las lecturas, complete las clases CountThread, para que las mismas definan el ciclo de vida de un hilo que imprima por pantalla los números entre A y B.
 2. Complete el método __main__ de la clase CountMainThreads para que:
-	1. Cree 3 hilos de tipo CountThread, asignándole al primero el intervalo [0..99], al segundo [99..199], y al tercero [200..299].
+	1. Cree 3 hilos de tipo CountThread, asignándole al primero el intervalo [0…99], al segundo [99…199], y al tercero [200…299].
 	2. Inicie los tres hilos con 'start()'.
 	3. Ejecute y revise la salida por pantalla. 
-	4. Cambie el incio con 'start()' por 'run()'. Cómo cambia la salida?, por qué?.
+	4. Cambie el inicio con 'start()' por 'run()'. Cómo cambia la salida?, ¿por qué?
 
  ## Desarrollo Parte I 
 
 Para esta primera parte, inciso 1, se completa clase CountThread primero heredando de la clase Thread en java para trabajar con hilos.
-Se definen dos variables que seran los limites del rango que solicita el ejercicio
+Se definen dos variables que serán los límites del rango que solicita el ejercicio
 Definimos un constructor
-Finalmente hacemos una sobreescritura del metodo run 
+Finalmente, hacemos una sobrescritura del método run 
 
 ![Imagen1.png](img/1.png)
 
-En el inciso 2, Se crean los 3 hilos, con los rangos correspondientes y su respectiva inicializacion.
+En el inciso 2, Se crean los 3 hilos, con los rangos correspondientes y su respectiva inicialización.
 
 ![Hello](img/2.png)
 
@@ -39,13 +39,13 @@ Veamos que sucede cuando los ejecutamos:
 
 ![Hello](img/7.png)
 
-Esta respuesta es correcta debido a que los hilos se ejecutan en paralelo, y el sistema lo que hace es ir mostrando la salida de un hilo, luego del otro, y del otro , entrecruzadas.
+Esta respuesta es correcta debido a que los hilos se ejecutan en paralelo, y el sistema lo que hace es ir mostrando la salida de un hilo, luego del otro, y del otro, entrecruzadas.
 
-Inciso 3, si cambiamos la incializacion por el metodo run, sucede los siguiente:
+Inciso 3, si cambiamos la inicialización por el método run, sucede lo siguiente:
 
 ![Hello](img/8.png)
 
-Al hacerlo, obtenemos que las salidas se muestran en orden, esto sucede debido que run() invoca un hilo y en ese hilo es donde se ejecuta el codigo, diferente a start(), que crea un nuevo hilo de ejecución y a su vez invoca a run() en ese nuevo hilo.
+Al hacerlo, obtenemos que las salidas se muestran en orden, esto sucede debido a que run() invoca un hilo y en ese hilo es donde se ejecuta el código, diferente a start(), que crea un nuevo hilo de ejecución y a su vez invoca a run() en ese nuevo hilo.
 
 **Parte II Hilos Java**
 
@@ -57,6 +57,19 @@ Para este ejercicio se quiere calcular, en el menor tiempo posible, y en una sol
 2. Haga que la función PiDigits.getDigits() reciba como parámetro adicional un valor N, correspondiente al número de hilos entre los que se va a paralelizar la solución. Haga que dicha función espere hasta que los N hilos terminen de resolver el problema para combinar las respuestas y entonces retornar el resultado. Para esto, revise el método [join](https://docs.oracle.com/javase/tutorial/essential/concurrency/join.html) del API de concurrencia de Java.
 3. Ajuste las pruebas de JUnit, considerando los casos de usar 1, 2 o 3 hilos (este último para considerar un número impar de hilos!)
 
+## Desarrollo Parte II
+
+Inciso 1, creamos una nueva clase de tipo thread, con nuevos constructores y  variables definidas, nos podemos apalancar de los métodos getDigits, HexadecimalExponent y sum, que se encuentran el repositorio de apoyo del laboratorio, estos métodos representan el ciclo de vida de un hilo 
+
+|[Imagen](img/3.png)
+|[Imagen](img/4.png)
+|[Imagen](img/5.png)
+
+
+Inciso 2, modificamos el método getDigits de la clase Pdigits, para recibir un parámetro adicional N, y utilizamos el método join para que el hilo principal, espere a que los hilos N, terminen, para al final combinar los resultados en la lista
+|[Imagen](img/6.png)
+
+Inciso 3 Pruebas, 
 
 **Parte III Evaluación de Desempeño**
 
