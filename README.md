@@ -61,13 +61,13 @@ Para este ejercicio se quiere calcular, en el menor tiempo posible, y en una sol
 
 Inciso 1, creamos una nueva clase de tipo thread, con nuevos constructores y  variables definidas, nos podemos apalancar de los métodos getDigits, HexadecimalExponent y sum, que se encuentran el repositorio de apoyo del laboratorio, estos métodos representan el ciclo de vida de un hilo 
 
-|[Imagen](img/3.png)
-|[Imagen](img/4.png)
-|[Imagen](img/5.png)
+![Imagen](img/3.png)
+![Imagen](img/4.png)
+![Imagen](img/5.png)
 
 
 Inciso 2, modificamos el método getDigits de la clase Pdigits, para recibir un parámetro adicional N, y utilizamos el método join para que el hilo principal, espere a que los hilos N, terminen, para al final combinar los resultados en la lista
-|[Imagen](img/6.png)
+![Imagen](img/6.png)
 
 Inciso 3 Pruebas, 
 
