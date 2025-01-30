@@ -7,7 +7,7 @@ package edu.eci.arsw.threads;
 
 
  public class PidigitsThread extends Thread {
-    
+
     private static final int DigitsPerSum = 8;
     private static final double Epsilon = 1e-17;
     private int start;
@@ -17,6 +17,8 @@ package edu.eci.arsw.threads;
     public PidigitsThread(int start, int count) {
         this.start = start;
         this.count = count;
+        this.digitsPiArray = new byte[count];
+        System.out.println("Tcreando hilos para los digitos desde" + start + " hasta " + (start + count- 1));
     }
 
     public byte[] getDigits(int start, int count) {

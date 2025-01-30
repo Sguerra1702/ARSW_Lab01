@@ -51,4 +51,32 @@ import edu.eci.arsw.threads.*;
             byte[] digits = byteList;
             return digits;
         }
+
+
+        public byte[] getDigits(int start, int count) {
+            
+            PidigitsThread thread = new PidigitsThread(start, count);
+            thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return thread.getDigitsPi();
+        }
+
+
+
+        public static void main(String[] args) {
+            PiDigits piDigits = new PiDigits();
+            int start = 0;
+            int count = 1_000_000; // Un millón de dígitos
+    
+            long startTime = System.currentTimeMillis();
+            byte[] digits = piDigits.getDigits(start, count);
+            long endTime = System.currentTimeMillis();
+    
+            System.out.println("Tiempo de ejecución con un solo hilo: " + (endTime - startTime) + " ms");
+        }
+
     }
