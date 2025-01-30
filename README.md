@@ -89,6 +89,16 @@ Al iniciar el programa ejecute el monitor jVisualVM, y a medida que corran las p
 
 Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tiempo de solución vs. número de hilos. Analice y plantee hipótesis con su compañero para las siguientes preguntas (puede tener en cuenta lo reportado por jVisualVM):
 
+## Desarrollo Parte III
+
+Con un solo hilo
+![](img/13.png)
+
+Con tantos hilos como nucleo del procesador
+![](img/14.png)
+
+Con tanto hilos como el doble de nucleos del procesador
+![](img/15.png)
 
 
 1. Según la [ley de Amdahls](https://www.pugetsystems.com/labs/articles/Estimating-CPU-Performance-using-Amdahls-Law-619/#WhatisAmdahlsLaw?):
