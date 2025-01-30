@@ -91,13 +91,16 @@ Con lo anterior, y con los tiempos de ejecución dados, haga una gráfica de tie
 
 ## Desarrollo Parte III
 
-Con un solo hilo
+1) Con un solo hilo
+   
 ![](img/13.png)
 
-Con tantos hilos como nucleo del procesador
+2) Con tantos hilos como nucleo del procesador
+   
 ![](img/14.png)
 
-Con tanto hilos como el doble de nucleos del procesador
+3) Con tanto hilos como el doble de nucleos del procesador
+   
 ![](img/15.png)
 
 
