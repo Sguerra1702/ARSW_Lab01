@@ -6,29 +6,25 @@ package edu.eci.arsw.threads;
  */
 
 
-public class PidigitsThread extends Thread{
-    private static int DigitsPerSum = 8;
-    private static double Epsilon = 1e-17;
-    private int A;
-    private int B;
+ public class PidigitsThread extends Thread {
+    
+    private static final int DigitsPerSum = 8;
+    private static final double Epsilon = 1e-17;
+    private int start;
+    private int count;
     private byte[] digitsPiArray;
 
-    public PidigitsThread(){
-
-    }
-
-
-    public PidigitsThread(int A, int B){
-        this.A = A;
-        this.B = B;
+    public PidigitsThread(int start, int count) {
+        this.start = start;
+        this.count = count;
     }
 
     public byte[] getDigits(int start, int count) {
         if (start < 0) {
-            throw new RuntimeException("Ingrese un intervalo que sea valido");
-        }  
+            throw new RuntimeException("Invalid Interval");
+        }
         if (count < 0) {
-            throw new RuntimeException("Ingrese un intervalo que sea valido");
+            throw new RuntimeException("Invalid Interval");
         }
         byte[] digits = new byte[count];
         double sum = 0;
@@ -47,55 +43,54 @@ public class PidigitsThread extends Thread{
         return digits;
     }
 
-    public byte[] getDigitsPi(){
+    public byte[] getDigitsPi() {
         return digitsPiArray;
     }
+   
 
-
-    private static int hexadecimalExponentModule(int r, int h) {
-        int potencia = 1;
-        while (potencia * 2 <= r){
-            potencia *= 2;
+    private static int hexExponentModulo(int p, int m) {
+        int power = 1;
+        while (power * 2 <= p) {
+            power *= 2;
         }
-        int finalresult = 1;
-        while (potencia > 0){
-            if (r >= potencia){
-                finalresult *=16;
-                finalresult %= h;
+        int result = 1;
+        while (power > 0) {
+            if (p >= power) {
+                result *= 16;
+                result %= m;
+                p -= power;
             }
-            potencia /= 2;
-            if (potencia > 0){
-                finalresult *= finalresult;
-                finalresult %= h;
-
+            power /= 2;
+            if (power > 0) {
+                result *= result;
+                result %= m;
             }
         }
-        return finalresult;
+        return result;
     }
 
-    private double sum(int e, int f) {
-        double Sum = 0;
-        int d = e;
-        int power = f;
+    private static double sum(int m, int n) {
+        double sum = 0;
+        int d = m;
+        int power = n;
         while (true) {
             double term;
             if (power > 0) {
-                term = (double) hexadecimalExponentModule(power, d) / d;
+                term = (double) hexExponentModulo(power, d) / d;
             } else {
                 term = Math.pow(16, power) / d;
                 if (term < Epsilon) {
                     break;
                 }
             }
-            d += 8;
+            sum += term;
             power--;
-            Sum += term;
+            d += 8;
         }
-        return Sum;
+        return sum;
     }
-    
 
-    public void run(){
-        getDigits(this.A,this.B);
+    public void run() {
+        digitsPiArray = getDigits(this.start, this.count);
     }
 }

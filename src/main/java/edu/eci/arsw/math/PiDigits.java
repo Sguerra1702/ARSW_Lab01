@@ -11,51 +11,48 @@ import edu.eci.arsw.threads.*;
 ///  https://en.wikipedia.org/wiki/Bailey%E2%80%93Borwein%E2%80%93Plouffe_formula
 ///  *** Translated from C# code: https://github.com/mmoroney/DigitsOfPi ***
 ///  </summary>
-public class PiDigits {
 
-    private static List<PidigitsThread> ListThread = new ArrayList<PidigitsThread>();
-    private static byte[] ListByte;
 
-    public byte[] getDigits(int start, int count, int n) {
 
-        ListThread.clear();
-
-        // Se calcula la cantidad de digitos que cada hilo debe procesar
-        int ThreadNumber = count / n;
-        ListByte = new byte[count];
-        int auxiliar = 0;
-        //Crear el primer hilo con la mayor carga de trabajo adoptando el excedente
-        if (count % n != 0)
-            auxiliar = count % n;
-        ListThread.add(new PidigitsThread(start, ThreadNumber + auxiliar));
-        n--;
-        start += auxiliar;
-        // Se crean los demas hilos
-        for (int i = 0; i < n; i++) {
-            ListThread.add(new PidigitsThread(start + ThreadNumber, ThreadNumber));
-            start += ThreadNumber;
-        }
-         // Aqui arrancan todos los hilos
-        for (Thread T : ListThread) {
-            T.start();
-        }
-        // Sincronizar los hilos y se utiliza la funcion join para que el hilo
-        // principal espere que cada hilo termine su ejecucion
-        try {
-            int i = 0;
-            for (PidigitsThread P : ListThread) {
-                P.join();
-                for (byte B : P.getDigitsPi()) {
-                    ListByte[i] = B;
-                    i++;
-                }
+    public class PiDigits {
+        private List<PidigitsThread> ListThread= new ArrayList<PidigitsThread>();
+        private byte[] byteList;
+        /**
+         * Returns a range of hexadecimal digits of pi.
+         * @param start The starting location of the range.
+         * @param count The number of digits to return
+         * @return An array containing the hexadecimal digits.
+         */
+        public byte[] getDigits(int start, int count, int N) {
+            int numberPerThread = count / N;
+            byteList = new byte[count];
+            int aux = 0;
+            if (count % N != 0) aux =count % N ;
+            ListThread.add(new PidigitsThread(start,numberPerThread + aux));
+            N--;
+            start += aux;
+            // System.out.println("VALOR start: " + start);
+            for (int i = 0; i < N; i++) {
+                ListThread.add(new PidigitsThread(start + numberPerThread,numberPerThread));
+                start +=numberPerThread;
+                // System.out.println("VALOR start: " + start + ", VALOR PER THREAD: " + (numberPerThread + aux) );
             }
-        } catch (Exception e) {
-            System.out.println("Error en el Thread");
+            for (Thread t : ListThread) {
+                t.start();
+            }
+            try {
+                int i = 0;
+                for (PidigitsThread t : ListThread) {
+                    t.join();
+                    for (byte b : t.getDigitsPi()) {
+                        byteList[i]= b;
+                        i++;
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Error in thread");
+            }
+            byte[] digits = byteList;
+            return digits;
         }
-        byte[] digits = ListByte;
-        return digits;
-
     }
-
-}
